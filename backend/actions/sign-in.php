@@ -23,7 +23,7 @@ $num  = mysqli_num_rows($result);
 if($num == 1){
     while($row= mysqli_fetch_assoc($result)){
         if(password_verify($reqPass , $row['Password'])){
-
+                setcookie('loginfo' , true , time()+60*60*30);
         
         session_start();
         $_SESSION['loggedin'] = true;

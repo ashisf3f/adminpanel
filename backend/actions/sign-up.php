@@ -50,7 +50,8 @@ if($userPass == $confPass){
   $sql = "INSERT INTO `sign_up`  (`Name`, `Phone`, `Email`, `Password`) VALUES ('$uesrname' ,'$userPhone', '$userEmail','$password')";
   $result = mysqli_query($conn , $sql);
   if($result){
-    
+    session_start();
+    $_SESSION['signinfo'] = true;
     header('Location: ../../build/pages/sign-in.php');
   }
 }

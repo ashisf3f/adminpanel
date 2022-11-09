@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
+if(!isset($_COOKIE['loginfo'])!=true || $_SESSION['loggedin']!=true){
         header('Location: pages/sign-in.php');
         exit();
 }
@@ -16,7 +16,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png" />
     <link rel="icon" type="image/png" href="./assets/img/favicon.png" />
-    <title>Soft UI Dashboard Tailwind</title>
+    <title>ASK</title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Font Awesome Icons -->
@@ -27,12 +27,13 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
     <!-- Popper -->
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <!-- Main Styling -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
     <link href="./assets/css/soft-ui-dashboard-tailwind.css?v=1.0.4" rel="stylesheet" />    
   </head>
 
-  <body class="m-0 font-sans antialiased font-normal text-base leading-default bg-gray-50 text-slate-500">
+  <body class="m-0 font-sans antialiased font-normal dark:bg-[#181616] text-base leading-default bg-gray-50 text-slate-500">
     <!-- sidenav  -->
-    <aside class="max-w-62.5 ease-nav-brand z-990 fixed inset-y-0 my-4  block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-2xl border-0 bg-white p-0 antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0 xl:bg-transparent scroll-smooth">
+    <aside class="max-w-62.5 hidden ease-nav-brand z-990 fixed inset-y-0 my-4   w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-2xl border-0 bg-white p-0 antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0 xl:bg-transparent scroll-smooth">
       <div class="h-19.5">
         <i class="absolute top-0 right-0 hidden p-4 opacity-50 cursor-pointer fas fa-times text-slate-400 xl:hidden" sidenav-close></i>
         <a class="block px-8 py-6 m-0 text-sm whitespace-nowrap text-slate-700" href="" >
@@ -80,81 +81,6 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
 
 
 
-          <?php
-if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
-  echo "
-  <li class='mt-0.5 w-full'>
-  <a class='py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors' href='pages/sign-in.php'>
-  <div class='shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5'>
-  <svg width='12px' height='12px' viewBox='0 0 40 44' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
-  <title>document</title>
-  <g stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'>
-  <g transform='translate(-1870.000000, -591.000000)' fill='#FFFFFF' fill-rule='nonzero'>
-  <g transform='translate(1716.000000, 291.000000)'>
-  <g transform='translate(154.000000, 300.000000)'>
-  <path class='fill-slate-800 opacity-60' d='M40,40 L36.3636364,40 L36.3636364,3.63636364 L5.45454545,3.63636364 L5.45454545,0 L38.1818182,0 C39.1854545,0 40,0.814545455 40,1.81818182 L40,40 Z'></path>
-                        <path class='fill-slate-800' d='M30.9090909,7.27272727 L1.81818182,7.27272727 C0.814545455,7.27272727 0,8.08727273 0,9.09090909 L0,41.8181818 C0,42.8218182 0.814545455,43.6363636 1.81818182,43.6363636 L30.9090909,43.6363636 C31.9127273,43.6363636 32.7272727,42.8218182 32.7272727,41.8181818 L32.7272727,9.09090909 C32.7272727,8.08727273 31.9127273,7.27272727 30.9090909,7.27272727 Z M18.1818182,34.5454545 L7.27272727,34.5454545 L7.27272727,30.9090909 L18.1818182,30.9090909 L18.1818182,34.5454545 Z M25.4545455,27.2727273 L7.27272727,27.2727273 L7.27272727,23.6363636 L25.4545455,23.6363636 L25.4545455,27.2727273 Z M25.4545455,20 L7.27272727,20 L7.27272727,16.3636364 L25.4545455,16.3636364 L25.4545455,20 Z'></path>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-                </svg>
-            </div>
-            <span class='ml-1 duration-300 opacity-100 pointer-events-none ease-soft'>Sign In</span>
-            </a>
-        </li>
-        
-        <li class='mt-0.5 w-full'>
-          <a class='py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors' href='./pages/sign-up.php'>
-            <div class='shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5'>
-              <svg width='12px' height='20px' viewBox='0 0 40 40' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
-              <title>spaceship</title>
-              <g stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'>
-                  <g transform='translate(-1720.000000, -592.000000)' fill='#FFFFFF' fill-rule='nonzero'>
-                    <g transform='translate(1716.000000, 291.000000)'>
-                      <g transform='translate(4.000000, 301.000000)'>
-                        <path
-                        class='fill-slate-800'
-                          d='M39.3,0.706666667 C38.9660984,0.370464027 38.5048767,0.192278529 38.0316667,0.216666667 C14.6516667,1.43666667 6.015,22.2633333 5.93166667,22.4733333 C5.68236407,23.0926189 5.82664679,23.8009159 6.29833333,24.2733333 L15.7266667,33.7016667 C16.2013871,34.1756798 16.9140329,34.3188658 17.535,34.065 C17.7433333,33.98 38.4583333,25.2466667 39.7816667,1.97666667 C39.8087196,1.50414529 39.6335979,1.04240574 39.3,0.706666667 Z M25.69,19.0233333 C24.7367525,19.9768687 23.3029475,20.2622391 22.0572426,19.7463614 C20.8115377,19.2304837 19.9992882,18.0149658 19.9992882,16.6666667 C19.9992882,15.3183676 20.8115377,14.1028496 22.0572426,13.5869719 C23.3029475,13.0710943 24.7367525,13.3564646 25.69,14.31 C26.9912731,15.6116662 26.9912731,17.7216672 25.69,19.0233333 L25.69,19.0233333 Z'
-                        ></path>
-                        <path class='fill-slate-800 opacity-60' d='M1.855,31.4066667 C3.05106558,30.2024182 4.79973884,29.7296005 6.43969145,30.1670277 C8.07964407,30.6044549 9.36054508,31.8853559 9.7979723,33.5253085 C10.2353995,35.1652612 9.76258177,36.9139344 8.55833333,38.11 C6.70666667,39.9616667 0,40 0,40 C0,40 0,33.2566667 1.855,31.4066667 Z'></path>
-                        <path class='fill-slate-800 opacity-60' d='M17.2616667,3.90166667 C12.4943643,3.07192755 7.62174065,4.61673894 4.20333333,8.04166667 C3.31200265,8.94126033 2.53706177,9.94913142 1.89666667,11.0416667 C1.5109569,11.6966059 1.61721591,12.5295394 2.155,13.0666667 L5.47,16.3833333 C8.55036617,11.4946947 12.5559074,7.25476565 17.2616667,3.90166667 L17.2616667,3.90166667 Z'></path>
-                        <path class='fill-slate-800 opacity-60' d='M36.0983333,22.7383333 C36.9280725,27.5056357 35.3832611,32.3782594 31.9583333,35.7966667 C31.0587397,36.6879974 30.0508686,37.4629382 28.9583333,38.1033333 C28.3033941,38.4890431 27.4704606,38.3827841 26.9333333,37.845 L23.6166667,34.53 C28.5053053,31.4496338 32.7452344,27.4440926 36.0983333,22.7383333 L36.0983333,22.7383333 Z'></path>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </div>
-            <span class='ml-1 duration-300 opacity-100 pointer-events-none ease-soft'>Sign Up</span>
-          </a>
-        </li>    ";
-}
-else{
- echo "
-  <li class='mt-0.5 w-full'>
-    <a class='py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors' href='./pages/profile.php'>
-      <div class='shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5'>
-        <svg width='12px' height='12px' viewBox='0 0 46 42' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
-          <title>customer-support</title>
-          <g stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'>
-            <g transform='translate(-1717.000000, -291.000000)' fill='#FFFFFF' fill-rule='nonzero'>
-              <g transform='translate(1716.000000, 291.000000)'>
-                <g transform='translate(1.000000, 0.000000)'>
-                  <path class='fill-slate-800 opacity-60' d='M45,0 L26,0 C25.447,0 25,0.447 25,1 L25,20 C25,20.379 25.214,20.725 25.553,20.895 C25.694,20.965 25.848,21 26,21 C26.212,21 26.424,20.933 26.6,20.8 L34.333,15 L45,15 C45.553,15 46,14.553 46,14 L46,1 C46,0.447 45.553,0 45,0 Z'></path>
-                  <path class='fill-slate-800' d='M22.883,32.86 C20.761,32.012 17.324,31 13,31 C8.676,31 5.239,32.012 3.116,32.86 C1.224,33.619 0,35.438 0,37.494 L0,41 C0,41.553 0.447,42 1,42 L25,42 C25.553,42 26,41.553 26,41 L26,37.494 C26,35.438 24.776,33.619 22.883,32.86 Z'></path>
-                  <path class='fill-slate-800' d='M13,28 C17.432,28 21,22.529 21,18 C21,13.589 17.411,10 13,10 C8.589,10 5,13.589 5,18 C5,22.529 8.568,28 13,28 Z'></path>
-                </g>
-              </g>
-            </g>
-          </g>
-        </svg>
-      </div>
-      <span class='ml-1 duration-300 opacity-100 pointer-events-none ease-soft'>Profile</span>
-    </a>
-  </li> ";
-}
-?>
 
         </ul>
       </div>
@@ -164,7 +90,7 @@ else{
 
     <!-- end sidenav -->
 
-    <main class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">
+    <main class="ease-soft-in-out  relative h-full max-h-screen rounded-xl transition-all duration-200">
       <!-- Navbar -->
       <nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all shadow-none duration-250 ease-soft-in rounded-2xl lg:flex-nowrap lg:justify-evenly" navbar-main navbar-scroll="true">
         <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
@@ -172,34 +98,27 @@ else{
             <!-- breadcrumb -->
             <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
               <li class="leading-normal text-sm">
-                <a class="opacity-50 text-slate-700" href="javascript:;">User</a>
+                <a class="opacity-50 dark:text-white text-slate-700" href="">ASK</a>
               </li>
-              <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Content</li>
+              <li class="text-sm pl-2 capitalize leading-normal dark:text-white text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Home</li>
             </ol>
-            <h6 class="mb-0 font-bold capitalize">Page :</h6>
           </nav>
 
-          <div class="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
+          <div class="flex items-center mt-2 grow sm:mt-0 sm:mr-2 md:mr-0 lg:flex lg:basis-auto">
       
             <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full w-full">
 
               <li class="flex ">
+                <a href="pages/profile.php">
+              <i class='fa fa-user mr-1 mt-0.54'></i>
               <?php
 if(isset($_SESSION['username']) || $_SESSION['loggedin  '] =true){
       echo $_SESSION['username']; 
-}
-else {
-
-  echo "  <a href='./pages/sign-in.php' class='block px-0 py-2 font-semibold transition-all ease-nav-brand text-sm text-slate-500'>
-          <i class='fa fa-user sm:mr-1'></i>
-          <span class='hidden sm:inline'>Sign In</span>
-        </a> ";
-}
-
-        ?>
+}       ?>
+</a>
               </li>
-              <li class="flex items-center pl-4 xl:hidden">
-                <a href="javascript:;" class="block p-0 transition-all ease-nav-brand text-sm text-slate-500" sidenav-trigger>
+              <li class="flex hidden items-center pl-4 xl:hidden">
+                <a href="javascript:;" class="block p-0 transition-all ease-nav-brand hidden text-sm text-slate-500" sidenav-trigger>
                   <div class="w-4.5 overflow-hidden">
                     <i class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
                     <i class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
@@ -215,84 +134,7 @@ else {
               </li>
 
               <!-- notifications -->
-      <?php  
-if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
-    echo " 
-    <li class='relative flex items-center pr-2'>
-                <p class='hidden transform-dropdown-show'></p>
-                <a href='javascript:;' class='block p-0 transition-all text-sm ease-nav-brand text-slate-500' dropdown-trigger aria-expanded='false'>
-                  <i class='cursor-pointer fa fa-bell'></i>
-                </a>
-
-                <ul dropdown-menu class='text-sm transform-dropdown before:font-awesome before:leading-default before:duration-350 before:ease-soft lg:shadow-soft-3xl duration-250 min-w-44 before:sm:right-7.5 before:text-5.5 pointer-events-none absolute right-0 top-0 z-50 origin-top list-none rounded-lg border-0 border-solid border-transparent bg-white bg-clip-padding px-2 py-4 text-left text-slate-500 opacity-0 transition-all before:absolute before:right-2 before:left-auto before:top-0 before:z-50 before:inline-block before:font-normal before:text-white before:antialiased before:transition-all before:content-['\f0d8'] sm:-mr-6 lg:absolute lg:right-0 lg:left-auto lg:mt-2 lg:block lg:cursor-pointer'>
-                  <!-- add show class on dropdown open js -->
-                  <li class='relative mb-2'>
-                    <a class='ease-soft py-1.2 clear-both block w-full whitespace-nowrap rounded-lg bg-transparent px-4 duration-300 hover:bg-gray-200 hover:text-slate-700 lg:transition-colors' href='javascript:;'>
-                      <div class='flex py-1'>
-                        <div class='my-auto'>
-                          <img src='./assets/img/team-2.jpg' class='inline-flex items-center justify-center mr-4 text-white text-sm h-9 w-9 max-w-none rounded-xl' />
-                        </div>
-                        <div class='flex flex-col justify-center'>
-                          <h6 class='mb-1 font-normal leading-normal text-sm'><span class='font-semibold'>New message</span> from Laur</h6>
-                          <p class='mb-0 leading-tight text-xs text-slate-400'>
-                            <i class='mr-1 fa fa-clock'></i>
-                            13 minutes ago
-                          </p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-
-                  <li class='relative mb-2'>
-                    <a class='ease-soft py-1.2 clear-both block w-full whitespace-nowrap rounded-lg px-4 transition-colors duration-300 hover:bg-gray-200 hover:text-slate-700' href='javascript:;'>
-                      <div class='flex py-1'>
-                        <div class='my-auto'>
-                          <img src='./assets/img/small-logos/logo-spotify.svg' class='inline-flex items-center justify-center mr-4 text-white text-sm bg-gradient-to-tl from-gray-900 to-slate-800 h-9 w-9 max-w-none rounded-xl' />
-                        </div>
-                        <div class='flex flex-col justify-center'>
-                          <h6 class='mb-1 font-normal leading-normal text-sm'><span class='font-semibold'>New album</span> by Travis Scott</h6>
-                          <p class='mb-0 leading-tight text-xs text-slate-400'>
-                            <i class='mr-1 fa fa-clock'></i>
-                            1 day
-                          </p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-
-                  <li class='relative'>
-                    <a class='ease-soft py-1.2 clear-both block w-full whitespace-nowrap rounded-lg px-4 transition-colors duration-300 hover:bg-gray-200 hover:text-slate-700' href='javascript:;'>
-                      <div class='flex py-1'>
-                        <div class='inline-flex items-center justify-center my-auto mr-4 text-white transition-all duration-200 ease-nav-brand text-sm bg-gradient-to-tl from-slate-600 to-slate-300 h-9 w-9 rounded-xl'>
-                          <svg width='12px' height='12px' viewBox='0 0 43 36' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
-                            <title>credit-card</title>
-                            <g stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'>
-                              <g transform='translate(-2169.000000, -745.000000)' fill='#FFFFFF' fill-rule='nonzero'>
-                                <g transform='translate(1716.000000, 291.000000)'>
-                                  <g transform='translate(453.000000, 454.000000)'>
-                                    <path class='color-background' d='M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z' opacity='0.593633743'></path>
-                                    <path class='color-background' d='M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z'></path>
-                                  </g>
-                                </g>
-                              </g>
-                            </g>
-                          </svg>
-                        </div>
-                        <div class='flex flex-col justify-center'>
-                          <h6 class='mb-1 font-normal leading-normal text-sm'>Payment successfully completed</h6>
-                          <p class='mb-0 leading-tight text-xs text-slate-400'>
-                            <i class='mr-1 fa fa-clock'></i>
-                            2 days
-                          </p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </li>  ";
-}
-
-?>
+ 
               
               
             </ul>
@@ -308,7 +150,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
         <div class="flex flex-wrap -mx-3">
           <!-- card1 -->
           <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
-            <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
+            <div class="relative flex flex-col min-w-0 break-words dark:bg-[#161118] bg-white shadow-soft-xl rounded-2xl bg-clip-border">
               <div class="flex-auto p-4">
                 <div class="flex flex-row -mx-3">
                   <div class="flex-none w-2/3 max-w-full px-3">
@@ -332,7 +174,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
 
           <!-- card2 -->
           <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
-            <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
+            <div class="relative flex flex-col min-w-0 break-words dark:bg-[#161118] bg-white shadow-soft-xl rounded-2xl bg-clip-border">
               <div class="flex-auto p-4">
                 <div class="flex flex-row -mx-3">
                   <div class="flex-none w-2/3 max-w-full px-3">
@@ -356,7 +198,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
 
           <!-- card3 -->
           <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
-            <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
+            <div class="relative flex flex-col min-w-0 break-words dark:bg-[#161118] bg-white shadow-soft-xl rounded-2xl bg-clip-border">
               <div class="flex-auto p-4">
                 <div class="flex flex-row -mx-3">
                   <div class="flex-none w-2/3 max-w-full px-3">
@@ -380,7 +222,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
 
           <!-- card4 -->
           <div class="w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-1/4">
-            <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
+            <div class="relative flex flex-col min-w-0 break-words dark:bg-[#161118] bg-white shadow-soft-xl rounded-2xl bg-clip-border">
               <div class="flex-auto p-4">
                 <div class="flex flex-row -mx-3">
                   <div class="flex-none w-2/3 max-w-full px-3">
@@ -406,7 +248,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
         <!-- cards row 2 -->
         <div class="flex flex-wrap mt-6 -mx-3">
           <div class="w-full px-3 mb-6 lg:mb-0 lg:w-7/12 lg:flex-none">
-            <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
+            <div class="relative flex flex-col min-w-0 break-words dark:bg-[#161118] bg-white shadow-soft-xl rounded-2xl bg-clip-border">
               <div class="flex-auto p-4">
                 <div class="flex flex-wrap -mx-3">
                   <div class="max-w-full px-3 lg:w-1/2 lg:flex-none">
@@ -433,7 +275,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
             </div>
           </div>
           <div class="w-full max-w-full px-3 lg:w-5/12 lg:flex-none">
-            <div class="border-black/12.5 shadow-soft-xl relative flex h-full min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border p-4">
+            <div class="border-black/12.5 shadow-soft-xl relative flex h-full min-w-0 flex-col break-words rounded-2xl border-0 border-solid dark:bg-[#161118] bg-white bg-clip-border p-4">
               <div class="relative h-full overflow-hidden bg-cover rounded-xl" style="background-image: url('./assets/img/ivancik.jpg')">
                 <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-gray-900 to-slate-800 opacity-80"></span>
                 <div class="relative z-10 flex flex-col flex-auto h-full p-4">
@@ -453,7 +295,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
 
         <div class="flex flex-wrap mt-6 -mx-3">
           <div class="w-full max-w-full px-3 mt-0 mb-6 lg:mb-0 lg:w-5/12 lg:flex-none">
-            <div class="border-black/12.5 shadow-soft-xl relative z-20 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
+            <div class="border-black/12.5 shadow-soft-xl relative z-20 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid dark:bg-[#161118] bg-white bg-clip-border">
               <div class="flex-auto p-4">
                 <div class="py-4 pr-1 mb-4 bg-gradient-to-tl from-gray-900 to-slate-800 rounded-xl">
                   <div>
@@ -484,7 +326,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
                         <p class="mt-1 mb-0 font-semibold leading-tight text-xs">Users</p>
                       </div>
                       <h4 class="font-bold">36K</h4>
-                      <div class="text-xs h-0.75 flex w-3/4 overflow-visible rounded-lg bg-gray-200">
+                      <div class="text-xs h-0.75 flex w-3/4 overflow-visible rounded-lg dark:bg-[#161118] bg-gray-200">
                         <div class="duration-600 ease-soft -mt-0.38 -ml-px flex h-1.5 w-3/5 flex-col justify-center overflow-hidden whitespace-nowrap rounded-lg bg-slate-700 text-center text-white transition-all" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
                     </div>
@@ -513,7 +355,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
                         <p class="mt-1 mb-0 font-semibold leading-tight text-xs">Clicks</p>
                       </div>
                       <h4 class="font-bold">2m</h4>
-                      <div class="text-xs h-0.75 flex w-3/4 overflow-visible rounded-lg bg-gray-200">
+                      <div class="text-xs h-0.75 flex w-3/4 overflow-visible rounded-lg dark:bg-[#161118] bg-gray-200">
                         <div class="duration-600 ease-soft -mt-0.38 w-9/10 -ml-px flex h-1.5 flex-col justify-center overflow-hidden whitespace-nowrap rounded-lg bg-slate-700 text-center text-white transition-all" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
                     </div>
@@ -537,7 +379,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
                         <p class="mt-1 mb-0 font-semibold leading-tight text-xs">Sales</p>
                       </div>
                       <h4 class="font-bold">435$</h4>
-                      <div class="text-xs h-0.75 flex w-3/4 overflow-visible rounded-lg bg-gray-200">
+                      <div class="text-xs h-0.75 flex w-3/4 overflow-visible rounded-lg dark:bg-[#161118] bg-gray-200">
                         <div class="duration-600 ease-soft -mt-0.38 w-3/10 -ml-px flex h-1.5 flex-col justify-center overflow-hidden whitespace-nowrap rounded-lg bg-slate-700 text-center text-white transition-all" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
                     </div>
@@ -562,7 +404,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
                         <p class="mt-1 mb-0 font-semibold leading-tight text-xs">Items</p>
                       </div>
                       <h4 class="font-bold">43</h4>
-                      <div class="text-xs h-0.75 flex w-3/4 overflow-visible rounded-lg bg-gray-200">
+                      <div class="text-xs h-0.75 flex w-3/4 overflow-visible rounded-lg dark:bg-[#161118] bg-gray-200">
                         <div class="duration-600 ease-soft -mt-0.38 -ml-px flex h-1.5 w-1/2 flex-col justify-center overflow-hidden whitespace-nowrap rounded-lg bg-slate-700 text-center text-white transition-all" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
                     </div>
@@ -572,8 +414,8 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
             </div>
           </div>
           <div class="w-full max-w-full px-3 mt-0 lg:w-7/12 lg:flex-none">
-            <div class="border-black/12.5 shadow-soft-xl relative z-20 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
-              <div class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-white p-6 pb-0">
+            <div class="border-black/12.5 shadow-soft-xl relative z-20 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid dark:bg-[#161118] bg-white bg-clip-border">
+              <div class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid dark:bg-[#161118] bg-white p-6 pb-0">
                 <h6>Sales overview</h6>
                 <p class="leading-normal text-sm">
                   <i class="fa fa-arrow-up text-lime-500"></i>
@@ -595,8 +437,8 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
           <!-- card 1 -->
 
           <div class="w-full max-w-full px-3 mt-0 mb-6 md:mb-0 md:w-1/2 md:flex-none lg:w-2/3 lg:flex-none">
-            <div class="border-black/12.5 shadow-soft-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
-              <div class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-white p-6 pb-0">
+            <div class="border-black/12.5 shadow-soft-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid dark:bg-[#161118] bg-white bg-clip-border">
+              <div class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid dark:bg-[#161118] bg-white p-6 pb-0">
                 <div class="flex flex-wrap mt-0 -mx-3">
                   <div class="flex-none w-7/12 max-w-full px-3 mt-0 lg:w-1/2 lg:flex-none">
                     <h6>Projects</h6>
@@ -613,7 +455,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
                       </a>
                       <p class="hidden transform-dropdown-show"></p>
 
-                      <ul dropdown-menu class="z-100 text-sm transform-dropdown shadow-soft-3xl duration-250 before:duration-350 before:font-awesome before:ease-soft min-w-44 -ml-34 before:text-5.5 pointer-events-none absolute top-0 m-0 mt-2 list-none rounded-lg border-0 border-solid border-transparent bg-white bg-clip-padding px-2 py-4 text-left text-slate-500 opacity-0 transition-all before:absolute before:top-0 before:right-7 before:left-auto before:z-40 before:text-white before:transition-all before:content-['\f0d8']">
+                      <ul dropdown-menu class="z-100 text-sm transform-dropdown shadow-soft-3xl duration-250 before:duration-350 before:font-awesome before:ease-soft min-w-44 -ml-34 before:text-5.5 pointer-events-none absolute top-0 m-0 mt-2 list-none rounded-lg border-0 border-solid border-transparent dark:bg-[#161118] bg-white bg-clip-padding px-2 py-4 text-left text-slate-500 opacity-0 transition-all before:absolute before:top-0 before:right-7 before:left-auto before:z-40 before:text-white before:transition-all before:content-['\f0d8']">
                         <li class="relative">
                           <a class="py-1.2 lg:ease-soft clear-both block w-full whitespace-nowrap rounded-lg border-0 bg-transparent px-4 text-left font-normal text-slate-500 lg:transition-colors lg:duration-300" href="javascript:;">Action</a>
                         </li>
@@ -693,7 +535,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
                                 <span class="font-semibold leading-tight text-xs">60%</span>
                               </div>
                             </div>
-                            <div class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
+                            <div class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg dark:bg-[#161118] bg-gray-200">
                               <div class="duration-600 ease-soft bg-gradient-to-tl from-blue-600 to-cyan-400 -mt-0.38 -ml-px flex h-1.5 w-3/5 flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                           </div>
@@ -738,7 +580,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
                                 <span class="font-semibold leading-tight text-xs">10%</span>
                               </div>
                             </div>
-                            <div class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
+                            <div class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg dark:bg-[#161118] bg-gray-200">
                               <div class="duration-600 ease-soft bg-gradient-to-tl from-blue-600 to-cyan-400 -mt-0.38 w-1/10 -ml-px flex h-1.5 flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                           </div>
@@ -783,7 +625,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
                                 <span class="font-semibold leading-tight text-xs">100%</span>
                               </div>
                             </div>
-                            <div class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
+                            <div class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg dark:bg-[#161118] bg-gray-200">
                               <div class="duration-600 ease-soft bg-gradient-to-tl from-green-600 to-lime-400 -mt-0.38 -ml-px flex h-1.5 w-full flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                           </div>
@@ -842,7 +684,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
                                 <span class="font-semibold leading-tight text-xs">100%</span>
                               </div>
                             </div>
-                            <div class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
+                            <div class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg dark:bg-[#161118] bg-gray-200">
                               <div class="duration-600 ease-soft bg-gradient-to-tl from-green-600 to-lime-400 -mt-0.38 -ml-px flex h-1.5 w-full flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                           </div>
@@ -925,7 +767,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
                                 <span class="font-semibold leading-tight text-xs">40%</span>
                               </div>
                             </div>
-                            <div class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
+                            <div class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg dark:bg-[#161118] bg-gray-200">
                               <div class="duration-600 ease-soft bg-gradient-to-tl from-blue-600 to-cyan-400 -mt-0.38 -ml-px flex h-1.5 w-2/5 flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="40"></div>
                             </div>
                           </div>
@@ -941,8 +783,8 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
           <!-- card 2 -->
 
           <div class="w-full max-w-full px-3 md:w-1/2 md:flex-none lg:w-1/3 lg:flex-none">
-            <div class="border-black/12.5 shadow-soft-xl relative flex h-full min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
-              <div class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-white p-6 pb-0">
+            <div class="border-black/12.5 shadow-soft-xl relative flex h-full min-w-0 flex-col break-words rounded-2xl border-0 border-solid dark:bg-[#161118] bg-white bg-clip-border">
+              <div class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid dark:bg-[#161118] bg-white p-6 pb-0">
                 <h6>Orders overview</h6>
                 <p class="leading-normal text-sm">
                   <i class="fa fa-arrow-up text-lime-500"></i>
@@ -952,8 +794,8 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
               <div class="flex-auto p-4">
                 <div class="before:border-r-solid relative before:absolute before:top-0 before:left-4 before:h-full before:border-r-2 before:border-r-slate-100 before:content-[''] before:lg:-ml-px">
                   <div class="relative mb-4 mt-0 after:clear-both after:table after:content-['']">
-                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
-                      <i class="relative z-10 text-transparent ni leading-none ni-bell-55 leading-pro bg-gradient-to-tl from-green-600 to-lime-400 bg-clip-text fill-transparent"></i>
+                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full dark:bg-[#161118] bg-white text-center font-semibold">
+                      <i class="relative z-10 text-transparent ni  ni-bell-55 leading-pro bg-gradient-to-tl from-green-600 to-lime-400 bg-clip-text fill-transparent"></i>
                     </span>
                     <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
                       <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">$2400, Design changes</h6>
@@ -961,7 +803,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
                     </div>
                   </div>
                   <div class="relative mb-4 after:clear-both after:table after:content-['']">
-                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
+                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full dark:bg-[#161118] bg-white text-center font-semibold">
                       <i class="relative z-10 text-transparent ni leading-none ni-html5 leading-pro bg-gradient-to-tl from-red-600 to-rose-400 bg-clip-text fill-transparent"></i>
                     </span>
                     <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
@@ -970,7 +812,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
                     </div>
                   </div>
                   <div class="relative mb-4 after:clear-both after:table after:content-['']">
-                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
+                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full dark:bg-[#161118] bg-white text-center font-semibold">
                       <i class="relative z-10 text-transparent ni leading-none ni-cart leading-pro bg-gradient-to-tl from-blue-600 to-cyan-400 bg-clip-text fill-transparent"></i>
                     </span>
                     <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
@@ -979,7 +821,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
                     </div>
                   </div>
                   <div class="relative mb-4 after:clear-both after:table after:content-['']">
-                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
+                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full dark:bg-[#161118] bg-white text-center font-semibold">
                       <i class="relative z-10 text-transparent ni leading-none ni-credit-card leading-pro bg-gradient-to-tl from-red-500 to-yellow-400 bg-clip-text fill-transparent"></i>
                     </span>
                     <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
@@ -988,7 +830,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
                     </div>
                   </div>
                   <div class="relative mb-4 after:clear-both after:table after:content-['']">
-                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
+                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full dark:bg-[#161118] bg-white text-center font-semibold">
                       <i class="relative z-10 text-transparent ni leading-none ni-key-25 leading-pro bg-gradient-to-tl from-purple-700 to-pink-500 bg-clip-text fill-transparent"></i>
                     </span>
                     <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
@@ -997,7 +839,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
                     </div>
                   </div>
                   <div class="relative mb-0 after:clear-both after:table after:content-['']">
-                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
+                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full dark:bg-[#161118] bg-white text-center font-semibold">
                       <i class="relative z-10 text-transparent ni leading-none ni-money-coins leading-pro bg-gradient-to-tl from-gray-900 to-slate-800 bg-clip-text fill-transparent"></i>
                     </span>
                     <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
@@ -1048,12 +890,12 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
       <!-- end cards -->
     </main>
     <div fixed-plugin>
-      <a fixed-plugin-button class="bottom-7.5 right-7.5 text-xl z-990 shadow-soft-lg rounded-circle fixed cursor-pointer bg-white px-4 py-2 text-slate-700">
+      <a fixed-plugin-button class="bottom-7.5 right-7.5 text-xl z-990 shadow-soft-lg rounded-circle fixed cursor-pointer dark:bg-[#181616] bg-white px-4 py-2 text-slate-700">
         <i class="py-2 pointer-events-none fa fa-cog"> </i>
       </a>
       <!-- -right-90 in loc de 0-->
-      <div fixed-plugin-card class="z-sticky shadow-soft-3xl w-90 ease-soft -right-90 fixed top-0 left-auto flex h-full min-w-0 flex-col break-words rounded-none border-0 bg-white bg-clip-border px-2.5 duration-200">
-        <div class="px-6 pt-4 pb-0 mb-0 bg-white border-b-0 rounded-t-2xl">
+      <div fixed-plugin-card class="z-sticky shadow-soft-3xl w-90 ease-soft -right-90 fixed top-0 left-auto flex h-full min-w-0 flex-col break-words rounded-none border-0 dark:bg-[#161118] bg-white bg-clip-border px-2.5 duration-200">
+        <div class="px-6 pt-4 pb-0 mb-0 dark:bg-[#161118] bg-white border-b-0 rounded-t-2xl">
           <div class="float-left">
             <h5 class="mt-4 mb-0">ASK UPDATE</h5>
             <p>The thing just make you up.</p>
@@ -1071,12 +913,7 @@ if(isset($_SESSION['loggedin']) || $_SESSION['loggedin']=true){
     
           
           <!-- Navbar Fixed -->
-          <!-- <div class="mt-4">
-            <h6 class="mb-0">Navbar Fixed</h6>
-          </div> -->
-          <!-- <div class="min-h-6 mb-0.5 block pl-0">
-            <input navbarFixed class="rounded-10 duration-250 ease-soft-in-out after:rounded-circle after:shadow-soft-2xl after:duration-250 checked:after:translate-x-5.25 h-5 relative float-left mt-1 ml-auto w-10 cursor-pointer appearance-none border border-solid border-gray-200 bg-slate-800/10 bg-none bg-contain bg-left bg-no-repeat align-top transition-all after:absolute after:top-px after:h-4 after:w-4 after:translate-x-px after:bg-white after:content-[''] checked:border-slate-800/95 checked:bg-slate-800/95 checked:bg-none checked:bg-right" type="checkbox" />
-          </div> -->
+     
           <hr class="h-px bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent sm:my-6" />
           
           <a class="inline-block w-full px-6 py-3 mb-4 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer active:shadow-soft-xs hover:scale-102 active:opacity-85 leading-pro text-xs ease-soft-in tracking-tight-soft bg-150 bg-x-25 border-slate-700 text-slate-700 hover:bg-transparent hover:text-slate-700 hover:shadow-none active:bg-slate-700 active:text-white active:hover:bg-transparent active:hover:text-slate-700 active:hover:shadow-none" href="../backend/actions/logout.php" >Log Out</a>
