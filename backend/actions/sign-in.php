@@ -22,7 +22,7 @@ $result1 = mysqli_query($conn , $exitPost );
 $num  = mysqli_num_rows($result);
 $num1  = mysqli_num_rows($result1);
 if($num1 == 1){
-        while($row = mysqli_fetch_assoc($result1)){
+        while($row = mysqli_fetch_array($result1)){
           $title =   $row['title'];
           $_SESSION['exist_title'] = $title;
         }

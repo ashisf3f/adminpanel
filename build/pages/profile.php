@@ -43,7 +43,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
             <!-- breadcrumb -->
             <ol class="flex flex-wrap pt-1 pl-2 pr-4 mr-12 bg-transparent rounded-lg sm:mr-16">
               <li class="leading-normal text-sm">
-                <a class="opacity-50" href="../">ASK</a>
+                <a class="opacity-50" href="../index.php">ASK</a>
               </li>
               <li class="text-sm pl-2 capitalize leading-normal before:float-left before:pr-2 before:content-['/']" aria-current="page">Profile</li>
             </ol>
@@ -89,7 +89,8 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
           <span class="absolute inset-y-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-purple-700 to-pink-500 opacity-60"></span>
         </div>
         <div class="relative flex flex-col flex-auto min-w-0 p-4 mx-6 -mt-16 overflow-hidden break-words border-0 shadow-blur rounded-2xl bg-white/80 bg-clip-border backdrop-blur-2xl dark:bg-[#121211]/80  backdrop-saturate-200">
-          <div class="flex flex-wrap -mx-3">
+          <div class="flex justify-between  -mx-3">
+            <div class="flex flex-wrap">
             <div class="flex-none w-auto max-w-full px-3">
               <div class="text-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
                 <img src="../assets/img/bruce-mars.jpg" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
@@ -101,13 +102,14 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
                 <p class="mb-0 font-semibold leading-normal text-sm">Beginner / Programming</p>
               </div>
             </div>
-            <!-- <div class="w-full max-w-full px-3 mx-auto mt-4 sm:my-auto sm:mr-0 md:w-1/2 md:flex-none lg:w-4/12">
+            </div>
+            <div class="text-center pt-2 px-24">
               <div class="relative right-0">
                 <ul class="relative flex flex-wrap p-1 list-none bg-transparent rounded-xl" nav-pills role="tablist">
-                    ashis
+                   <a href="my-post.php">See Your Post ?</a> 
                 </ul>
               </div>
-            </div> -->
+            </div>
           </div>
         </div>
       </div>

@@ -5,8 +5,14 @@ session_start();
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
+$filename = $_FILES["fileToUpload"]["name"];
 $title = $_POST['title'];
 $email = $_SESSION['email'];
+$author = $_SESSION['username'];
+if(empty($filename)){
+  header('location: ../build/index.php?error=np-image-selected');
+  exit();
+}else{
 if(empty($title)){
     header('location: ../build/index.php?error=empty-title');
     exit();
@@ -14,15 +20,7 @@ if(empty($title)){
 else{
 
 
-$sql = "INSERT INTO `user_data`(`title` , Email) VALUES ('$title' , '$email')";
-$result = mysqli_query($conn , $sql);
-if($result){
-    $_SESSION['title'] = $title;
-  }
-else {
-  header('Location: ../../build/index.php?error=upload-failed-to-database');
-  exit();
-}
+
 
 
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -72,10 +70,19 @@ if ($uploadOk == 0) {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
     header('location: ../build/index.php?upload-success');
+    $sql = "INSERT INTO `user_data`(`title` , img_name , Email , Author) VALUES ('$title' , '$filename', '$email' , '$author')";
+$result = mysqli_query($conn , $sql);
+if($result){
+    $_SESSION['title'] = $title; 
+  }
+else {
+  header('Location: ../../build/index.php?error=upload-failed-to-database');
+  exit();
+}
   } else {
     header('location: ../build/index.php?error=Sorry-there-was-an-error-uploading-your-file.');
 
     // echo "Sorry, there was an error uploading your file.";
   }
-}}
+}}}
 ?>
