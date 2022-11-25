@@ -55,3 +55,4 @@ echo "test for post";
     //     };
 ?>
 
+<?php if(isset($_SESSION['newUsername'])){ echo $_SESSION['newUsername'];}else{ echo ""; } ?>

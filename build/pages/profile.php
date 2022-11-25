@@ -17,7 +17,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
     <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
-    <title>ASK | <?php  echo $_SESSION['username'] ?>  </title>
+    <title>ASK | <?php if(isset($_SESSION['newUsername'])){ echo $_SESSION['newUsername'];}else{ echo $_SESSION['username']; } ?></title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Font Awesome Icons -->
@@ -28,6 +28,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
     <!-- Popper -->
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <!-- Main Styling -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.41.0/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
     <link href="../assets/css/soft-ui-dashboard-tailwind.css?v=1.0.4" rel="stylesheet" />
 
@@ -98,7 +99,7 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
             </div>
             <div class="flex-none w-auto max-w-full px-3 my-auto">
               <div class="h-full">
-                <h5 class="mb-1"> <?php echo $_SESSION['username'] ?></h5>
+                <h5 class="mb-1"> <?php if(isset($_SESSION['newUsername'])){ echo $_SESSION['newUsername'];}else{ echo $_SESSION['username']; } ?></h5>
                 <p class="mb-0 font-semibold leading-normal text-sm">Beginner / Programming</p>
               </div>
             </div>
@@ -133,43 +134,83 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
           <div class="w-full max-w-full px-3 mx-4 mt-3 dark:bg-[#161118]  rounded-2xl lg-max:mt-6 xl:w-4/12">
             <div class="relative flex flex-col h-full min-w-0 break-words  dark:bg-[#161118] bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
               <div class="p-4 pb-0 mb-0 bg-white  dark:bg-[#161118] border-b-0 rounded-2xl">
-                <div class="flex flex-wrap -mx-3">
-                  <div class="flex items-center w-full  dark:bg-[#161118] max-w-full px-3 shrink-0 md:w-8/12 md:flex-none">
+                <div class="flex justify-between -mx-3">
+                  <div class="items-center w-full  dark:bg-[#161118] max-w-full px-3 shrink-0 md:w-8/12 md:flex-none">
                     <h6 class="mb-0">Profile Information</h6>
                   </div>
-                  <!-- <div class="w-full max-w-full px-3 text-right shrink-0 md:w-4/12 md:flex-none"> -->
-                    <!-- <a href="javascript:;" data-target="tooltip_trigger" data-placement="top">
-                      <i class="leading-normal fas fa-user-edit text-sm text-slate-400"></i>
-                    </a> -->
-                    
-                <!-- <a href="javascript:;" class="p-0 text-white transition-all text-sm ease-soft-in-out">
-                  <i fixed-plugin-button-nav class="cursor-pointer fas fa-user-edit text-sm text-slate-400" aria-hidden="true"></i>
-                </a>
-             
-                    <div data-target="tooltip" class="hidden px-2 py-1 text-center text-white bg-black rounded-lg text-sm" role="tooltip">
-                      Edit Profile
-                      <div class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']" data-popper-arrow></div>
-                    </div>
-                  </div> -->
+                  <div class="px-3  shrink-0 ">
+                      <!-- The button to open modal -->
+                     <label for="my-modal" class="cursor-pointer "><i class="leading-normal fas fa-user-edit text-sm text-slate-400"></i></label>
+                      <!-- Put this part before </body> tag -->
+                      <input type="checkbox" id="my-modal" class="modal-toggle" />
+                      <div class="modal">
+                        <div class="modal-box">
+                          <div class="flex justify-between pb-6">
+                            <div>
+                              <h3 class="font-bold text-lg  text-blue-700">Edit Profile</h3>
+                            </div>
+                            <div class="modal-action m-0">
+                              <label for="my-modal" class="cursor-pointer">
+                                X
+                              </label>
+                            </div>
+                          </div>
+                          <form action="../../backend/actions/edit-pof.php" method="post" enctype="multipart/form-data">
+                            <div class="form-list  space-y-4">
+                              <div class="list space-y-2">
+                            <label for="newUsername text-left "> Username</label>
+                            <input type="text" name="username" class= " bg-slate-700   rounded-md dark:text-white  w-full h-12 border-none " placeholder="Please select appropriate name for yourself!" value="<?php if(isset($_SESSION['newUsername'])){ echo $_SESSION['newUsername'];}else{ echo $_SESSION['username']; } ?>" required ></input>
+                              </div>
+                              <div class="list space-y-2">
+                            <label for="newUsername text-left "> Facebook</label>
+                            <input type="text" name="facebook" class= " bg-slate-700  rounded-md dark:text-white  w-full h-12 border-none " placeholder="Enter your appropriate newUsername for facebook!" value="<?php if(isset($_SESSION['newFacebook'])) { echo $_SESSION['newFacebook'];} else { echo $_SESSION['facebook']; } ?>" pattern="[A-Za-z0-9]+" required ></input>
+                              </div>
+                              <div class="list space-y-2">
+                            <label for="newUsername text-left "> Instagram</label>
+                            <input type="text" name="instagram" class= " bg-slate-700  rounded-md dark:text-white  w-full h-12 border-none " placeholder="Enter your appropriate newUsername for instagram!" value="<?php if(isset($_SESSION['newInstagram'])) { echo $_SESSION['newInstagram'];} else { echo $_SESSION['instagram']; } ?>" pattern="[A-Za-z0-9]+" required ></input>
+                              </div>
+                              <div class="list space-y-2">
+                            <label for="newUsername text-left "> Twitter</label>
+                            <input type="text" name="twitter" class= " bg-slate-700  rounded-md dark:text-white  w-full h-12 border-none " placeholder="Enter your appropriate newUsername for twitter!" value="<?php if(isset($_SESSION['newTwitter'])) { echo $_SESSION['newTwitter'];} else { echo $_SESSION['twitter']; } ?>"pattern="[A-Za-z0-9]+" required ></input>
+                              </div>
+                            </div>
+                            <div class="img py-6 mx-auto">
+                              <!-- <input type="text" name="fileToUpload" id="fileToUpload" class="block w-full text-sm text-slate-500
+                                          file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold
+                                        file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 file:cursor-pointer cursor-pointer
+                                            " /> -->
+                            </div>
+                            <div class="modal-action">
+                              <button name="submit" type="submit" class="bg-blue-500 hover:bg-blue-700 rounded-md py-2 px-3 text-white cursor-pointer ">
+                                <label for="my-modal" class="cursor-pointer">
+                                  Update
+                                </label>
+                              </button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                  </div>
+              
                 </div>
               </div>
               <div class="flex-auto p-4  dark:bg-[#161118]">
-                <p class="leading-normal text-sm">Hi, I`m  <?php echo $_SESSION['username'] ?>, Decisions: If you can`t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).</p>
+                <p class="leading-normal text-sm">Hi, I`m  <?php if(isset($_SESSION['newUsername'])){ echo $_SESSION['newUsername'];}else{ echo $_SESSION['username']; } ?>, Decisions: If you can`t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).</p>
                 <hr class="h-px my-6 bg-transparent bg-gradient-to-r from-transparent via-white to-transparent" />
                 <ul class="flex flex-col pl-0 mb-0  dark:bg-[#161118] rounded-lg">
-                  <li class="relative block px-4 py-2 pt-0 pl-0 leading-normal  dark:bg-[#161118] bg-white border-0 rounded-t-lg text-sm text-inherit"><strong class="text-slate-700">Full Name:</strong> &nbsp;  <?php echo $_SESSION['username'] ?></li>
+                  <li class="relative block px-4 py-2 pt-0 pl-0 leading-normal  dark:bg-[#161118] bg-white border-0 rounded-t-lg text-sm text-inherit"><strong class="text-slate-700">Full Name:</strong> &nbsp;  <?php if(isset($_SESSION['newUsername'])){ echo $_SESSION['newUsername'];}else{ echo $_SESSION['username']; } ?></li>
                   <li class="relative block px-4 py-2 pl-0 leading-normal  dark:bg-[#161118] bg-white border-0 border-t-0 text-sm text-inherit"><strong class="text-slate-700">Mobile:</strong> &nbsp; <?php echo $_SESSION['phone'] ?></li>
                   <li class="relative block px-4 py-2 pl-0 leading-normal  dark:bg-[#161118] bg-white border-0 border-t-0 text-sm text-inherit"><strong class="text-slate-700">Email:</strong> &nbsp;  <?php echo $_SESSION['email'] ?></li>
                   <li class="relative block px-4 py-2 pl-0 leading-normal  dark:bg-[#161118] bg-white border-0 border-t-0 text-sm text-inherit"><strong class="text-slate-700">Location:</strong> &nbsp; Nepal</li>
                   <li class="relative block px-4 py-2 pb-0 pl-0  dark:bg-[#161118] bg-white border-0 border-t-0 rounded-b-lg text-inherit">
                     <strong class="leading-normal text-sm text-slate-700">Social:</strong> &nbsp;
-                    <a class="inline-block py-0 pl-1 pr-2 mb-0 font-bold text-center text-blue-800 align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-none" href="https://facebook.com/ashisf2f">
+                    <a class="inline-block py-0 pl-1 pr-2 mb-0 font-bold text-center text-blue-800 align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-none" href="https://facebook.com/<?php if(isset($_SESSION['newFacebook'])){ echo $_SESSION['newFacebook'];}else{ echo $_SESSION['facebook']; } ?>">
                       <i class="fab fa-facebook fa-lg"></i>
                     </a>
-                    <a class="inline-block py-0 pl-1 pr-2 mb-0 font-bold text-center align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-none text-sky-600" href="https://twitter.com/ashif2f">
+                    <a class="inline-block py-0 pl-1 pr-2 mb-0 font-bold text-center align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-none text-sky-600" href="https://twitter.com/<?php if(isset($_SESSION['newTwitter'])) { echo $_SESSION['newTwitter'];} else { echo $_SESSION['twitter']; } ?>">
                       <i class="fab fa-twitter fa-lg"></i>
                     </a>
-                    <a class="inline-block py-0 pl-1 pr-2 mb-0 font-bold text-center align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-none text-sky-900" href="https://instagram.com/ashisf2f">
+                    <a class="inline-block py-0 pl-1 pr-2 mb-0 font-bold text-center align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-none text-sky-900" href="https://instagram.com/<?php if(isset($_SESSION['newInstagram'])) { echo $_SESSION['newInstagram'];} else { echo $_SESSION['instagram']; } ?>">
                       <i class="fab fa-instagram fa-lg"></i>
                     </a>
                   </li>
@@ -255,22 +296,6 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
                  
                 </div>
               </div>
-              <!-- <div class="w-full max-w-full px-3 mt-0 shrink-0 lg:w-1/2 lg:flex-none">
-                <ul class="flex flex-wrap justify-center pl-0 mb-0 list-none lg:justify-end">
-                  <li class="nav-item">
-                    <a href="https://www.creative-tim.com" class="block px-4 pt-0 pb-1 font-normal transition-colors ease-soft-in-out text-sm text-slate-500" target="_blank">Creative Tim</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="https://www.creative-tim.com/presentation" class="block px-4 pt-0 pb-1 font-normal transition-colors ease-soft-in-out text-sm text-slate-500" target="_blank">About Us</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="https://creative-tim.com/blog" class="block px-4 pt-0 pb-1 font-normal transition-colors ease-soft-in-out text-sm text-slate-500" target="_blank">Blog</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="https://www.creative-tim.com/license" class="block px-4 pt-0 pb-1 pr-0 font-normal transition-colors ease-soft-in-out text-sm text-slate-500" target="_blank">License</a>
-                  </li>
-                </ul>
-              </div> -->
             </div>
           </div>
         </footer>

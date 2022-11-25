@@ -113,11 +113,7 @@ if (!isset($_COOKIE['loginfo']) != true || $_SESSION['loggedin'] != true) {
             <li class="flex ">
               <a href="pages/profile.php">
                 <i class='fa fa-user mr-1 mt-0.54'></i>
-                <?php
-                if (isset($_SESSION['username']) || $_SESSION['loggedin  '] = true) {
-                  echo $_SESSION['username'];
-                }       ?>
-              </a>
+                <?php if(isset($_SESSION['newUsername'])){ echo $_SESSION['newUsername'];}else{ echo $_SESSION['username']; } ?>              </a>
             </li>
             <li class="flex hidden items-center pl-4 xl:hidden">
               <a href="javascript:;" class="block p-0 transition-all ease-nav-brand hidden text-sm text-slate-500" sidenav-trigger>
@@ -174,7 +170,8 @@ if (!isset($_COOKIE['loginfo']) != true || $_SESSION['loggedin'] != true) {
                       </div>
                       <form action="../backend/upload.php" method="post" enctype="multipart/form-data">
 
-                        <input type="text" name="title" class="bg-transparent w-full h-12 border-none focus:outline-none focus:shadow-none" placeholder="What's On Your Mind ? <?php echo $_SESSION['username'] ?>"></input>
+                        <input type="text" name="title" class="bg-transparent w-full h-12 border-none focus:outline-none focus:shadow-none" placeholder="What's On Your Mind ? <?php if(isset($_SESSION['newUsername'])){ echo $_SESSION['newUsername'];}else{ echo $_SESSION['username']; } ?>">
+                        </input>
                         <div class="img py-6 mx-auto">
                           <input type="file" name="fileToUpload" id="fileToUpload" class="block w-full text-sm text-slate-500
                                       file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold
