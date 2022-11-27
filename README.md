@@ -5,7 +5,7 @@
 Used soft Ui dashboard for easy frontend [soft.ui](https://www.creative-tim.com/product/soft-ui-dashboard).
 
 ```id
-hehe😁😁
+ashiskunwar.com.np
 ```
 
 ## License
