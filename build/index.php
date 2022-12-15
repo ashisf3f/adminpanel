@@ -143,9 +143,9 @@ if (!isset($_COOKIE['loginfo']) != true || $_SESSION['loggedin'] != true) {
     <!-- end Navbar -->
 
     <!-- cards -->
-    <div class="w-full px-6 py-6 mx-auto">
+    <div class="w-full px-4 py-6 mx-auto">
       <!-- row 1 -->
-      <div class="flex justify-center -mx-3">
+      <div class="flex justify-center -mx-6">
         <!-- card1 -->
         <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
           <div class="relative flex flex-col min-w-0 break-words dark:bg-[#161118] bg-white shadow-soft-xl rounded-2xl bg-clip-border">
@@ -207,27 +207,27 @@ if (!isset($_COOKIE['loginfo']) != true || $_SESSION['loggedin'] != true) {
       while ($result = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
         // echo $result['title'];
         echo ("  
-              <div class=' flex justify-center mt-6 -mx-3'> 
-                   <div class='w-full px-3 mb-6 lg:mb-0 lg:w-7/12 lg:flex-none'>
+              <div class=' flex justify-center mt-4 -mx-3'> 
+                   <div class='w-full px-3 mb-6 md:w-7/12 lg:w-5/12 lg:flex-none'>
               <div class=' min-w-0 break-words dark:bg-[#161118] bg-white shadow-soft-xl rounded-2xl bg-clip-border'>
                 <div class=' p-4'>
                   <div class=' -mx-3'>
                     <div class=' px-3 '>
                       <div class=''>
-                        <p class='pt-2 mb-1  font-bold'>");
+                        <p class=' mb-1  font-bold'>");
         echo $result['Author'];
         echo ("</p>
-                        <h5 class='font-semibold  p-3'> ");
+                        <h5 class='font-semibold  px-3'> ");
         echo $result['title'];
         echo ("
                           </h5>
                     
                       </div>
                     </div>
-                    <div class='px-6 py-6 text-center '>
+                    <div class=' py-4 text-center '>
                       <div class='h-full  rounded-xl'>
                         <div class='w-full h-full'>
-                          <img class=' h-full  rounded-md  w-[550px] mx-auto ' src='../backend/uploads/");
+                          <img class=' h-[500px]  rounded-md  w-[330px] mx-auto ' src='../backend/uploads/");
         echo $result['img_name'];
         echo ("' alt='rocket' />
                         </div>

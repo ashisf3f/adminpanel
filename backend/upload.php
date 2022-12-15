@@ -6,6 +6,8 @@ $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $filename = $_FILES["fileToUpload"]["name"];
+$file_basename = substr($filename, 0, strripos($filename, '.')); // get file extention
+$file_ext = substr($filename, strripos($filename, '.')); // get file name
 $title = $_POST['title'];
 $email = $_SESSION['email'];
 $author = $_SESSION['username'];
@@ -18,22 +20,14 @@ if(empty($title)){
     exit();
 }
 else{
-
-
-
-
-
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
   $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
   if($check !== false) {
-    // echo "File is an image - " . $check["mime"] . ".";
-    // header('location : ../build/index.php?eri')
         $uploadOk = 1;
   } else {
-    // echo "File is not an image.";
     header('location: ../build/index.php?error=file-is-not-an-image');
     $uploadOk = 0;
   }
@@ -67,10 +61,12 @@ if ($uploadOk == 0) {
 //   echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
-  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+  // Rename file
+  $newfilename = md5($file_basename) . $file_ext;
+  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_dir .$newfilename)) {
+    // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
     header('location: ../build/index.php?upload-success');
-    $sql = "INSERT INTO `user_data`(`title` , img_name , Email , Author) VALUES ('$title' , '$filename', '$email' , '$author')";
+    $sql = "INSERT INTO `user_data`(`title` , img_name , Email , Author) VALUES ('$title' , '$newfilename', '$email' , '$author')";
 $result = mysqli_query($conn , $sql);
 if($result){
     $_SESSION['title'] = $title; 
