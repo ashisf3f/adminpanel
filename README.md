@@ -10,4 +10,4 @@ ashiskunwar.com.np
 
 ## License
 
-[Ashis](https://ashiskunwar.com.np/about/)
+## © Copyright [ashiskunwar](https://ashiskunwar.com.np)
